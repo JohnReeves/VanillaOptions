@@ -17,7 +17,7 @@ Where:
 * $`t`$ is the time to expiration
 * $`\phi`$ is the cumulative distribution function of the standard normal distribution
 * $`d_0 = \frac{ln \left( S_0 / X \right) + \left( r + \sigma^2 / 2  \right) t}{\sigma \sqrt(t)}`$
-* $`d_1 - \sigma \ sqrt(t)`$
+* $`d_1 - \sigma \sqrt(t)`$
 
 
 ```python
