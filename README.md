@@ -16,6 +16,7 @@ Where:
 * $`r`$ is the risk-free interest rate
 * $`t`$ is the time to expiration
 * $`\phi`$ is the cumulative distribution function of the standard normal distribution
+* $`d_0 = \frac{ln \left( S_0 / X \right) + \left r + \sigma^2 / 2  \right) t}{\signma \sqrt(t)}`$ 
 
 The Black-Scholes model is used for pricing European options with the following formula for a call option:
 
