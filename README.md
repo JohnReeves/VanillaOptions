@@ -3,13 +3,11 @@ Introduction to European vanilla options
 
 https://paperswithbacktest.com/wiki/european-vanilla-call-put-option-pricing-with-python
 
-Black-Scholes Model is used for pricing European options with the following formula for a call option:
+Black-Scholes Model is used for pricing European options with the following formula for a call option
 
-```math
-C = S_0 \left( d_1 \right) - X e^{rt} \phi \left( d_2 \right)
-```
+$`C = S_0 \left( d_1 \right) - X e^{rt} \phi \left( d_2 \right)`$
 
-Where:
+Where
 
 * $`S_0`$ is the current stock price
 * $`X`$ is the strike price
@@ -19,6 +17,7 @@ Where:
 * $`d_0 = \frac{ln \left( S_0 / X \right) + \left( r + \sigma^2 / 2  \right) t}{\sigma \sqrt(t)}`$
 * $`d_1 - \sigma \sqrt(t)`$
 
+Although the model can be succinctly encoded with a few lines of Python, we will be using C++, just because :-)
 
 ```python
 import numpy as np
