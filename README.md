@@ -5,7 +5,7 @@ https://paperswithbacktest.com/wiki/european-vanilla-call-put-option-pricing-wit
 
 Black-Scholes Model is used for pricing European options with the following formula for a call option
 
-$`C = S_0 \phi \left( d_1 \right) - X e^{rt} \phi \left( d_2 \right)`$
+$`C = S_0 \Phi \left( d_1 \right) - X e^{rt} \Phi \left( d_2 \right)`$
 
 Where
 
@@ -13,7 +13,7 @@ Where
 * $`X`$ is the strike price
 * $`r`$ is the risk-free interest rate
 * $`t`$ is the time to expiration
-* $`\phi`$ is the cumulative distribution function of the standard normal distribution
+* $`\Phi`$ is the cumulative distribution function of the standard normal distribution
 * $`d_1 = \frac{ln \left( S_0 / X \right) + \left( r + \sigma^2 / 2  \right) t}{\sigma \sqrt t}`$
 * $`d_2 = d_1 - \sigma \sqrt t`$
 
