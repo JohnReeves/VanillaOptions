@@ -11,16 +11,11 @@ C = S_0 \left( d_1 \right) - X e^{rt} \phi \left( d_2 \right)
 
 Where:
 
-$`S_0`$ is the current stock price
-
-$`X`$ is the strike price
-
-$`r`$ is the risk-free interest rate
-
-$`t`$ is the time to expiration
-
-$`\phi`$ is the cumulative distribution function of the standard normal distribution
-
+* $`S_0`$ is the current stock price
+* $`X`$ is the strike price
+* $`r`$ is the risk-free interest rate
+* $`t`$ is the time to expiration
+* $`\phi`$ is the cumulative distribution function of the standard normal distribution
 
 The Black-Scholes model is used for pricing European options with the following formula for a call option:
 
