@@ -4,6 +4,7 @@ Introduction to European vanilla options
 https://paperswithbacktest.com/wiki/european-vanilla-call-put-option-pricing-with-python
 
 Black-Scholes Model
+
 The Black-Scholes model is used for pricing European options with the following formula for a call option:
 
 ```python
