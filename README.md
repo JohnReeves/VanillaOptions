@@ -3,7 +3,7 @@ Introduction to European vanilla options
 
 https://paperswithbacktest.com/wiki/european-vanilla-call-put-option-pricing-with-python
 
-Black-Scholes Model
+Black-Scholes Model is used for pricing European options with the following formula for a call option:
 
 ```math
 C = S_0 \left( d_1 \right) - X e^{rt} \phi \left( d_2 \right)
@@ -16,9 +16,9 @@ Where:
 * $`r`$ is the risk-free interest rate
 * $`t`$ is the time to expiration
 * $`\phi`$ is the cumulative distribution function of the standard normal distribution
-* $`d_0 = \frac{ln \left( S_0 / X \right) + \left( r + \sigma^2 / 2  \right) t}{\signma \sqrt(t)}`$ 
+* $`d_0 = \frac{ln \left( S_0 / X \right) + \left( r + \sigma^2 / 2  \right) t}{\sigma \sqrt(t)}`$
+* $`d_1 - \sigma \ sqrt(t)`$
 
-The Black-Scholes model is used for pricing European options with the following formula for a call option:
 
 ```python
 import numpy as np
