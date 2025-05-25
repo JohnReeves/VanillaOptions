@@ -6,7 +6,7 @@ https://paperswithbacktest.com/wiki/european-vanilla-call-put-option-pricing-wit
 Black-Scholes Model
 
 ```math
-C = S_0 \left( d_1 \right) - \chi \e^{rt} \phi \left( d_2 \right)
+C = S_0 \left( d_1 \right) - \chi \exp^{rt} \phi \left( d_2 \right)
 ```
 
 Where:
