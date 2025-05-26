@@ -4,6 +4,7 @@
 
 #ifndef VANILLA_CPP
 #define VANILLA_CPP
+
 #include "vanilla.h"
 #include <cmath>
 
@@ -20,6 +21,7 @@ void VanillaOption::copy(const VanillaOption &other) {
     risk_free_rate = other.risk_free_rate;
     maturity_time = other.maturity_time;
     underlying_asset_price = other.underlying_asset_price;
+    volatility_of_underlying_asset = other.volatility_of_underlying_asset;
 }
 
 VanillaOption::VanillaOption() {
@@ -71,6 +73,25 @@ double VanillaOption::get_underlying_asset_price() const {
     return underlying_asset_price;
 }
 
+double VanillaOption::get_volatility_asset_price() const {
+    return volatility_of_underlying_asset;
+}
+
+double normalCDF(double const x) {
+    return erfc( -x / sqrt(2) ) / 2;
+}
+
+double VanillaOption::calc_call_price() const {
+    double const sigma_sqrt_T = volatility_of_underlying_asset * sqrt( maturity_time );
+    double const d1 = ( ( log( underlying_asset_price / strike_price ) )
+                    + ( risk_free_rate + 0.5 * pow( volatility_of_underlying_asset, 2.0 ) ) * maturity_time )
+                    / sigma_sqrt_T;
+    double const d2 = d1 - sigma_sqrt_T;
+    double const call = strike_price * normalCDF(d1)
+                      - strike_price * exp(risk_free_rate * maturity_time)
+                      * normalCDF(d2);
+    return call;
+}
 
 #endif VANILLA_CPP
 
