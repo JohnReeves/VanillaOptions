@@ -19,14 +19,18 @@ public:
         const double& _underlying_asset_price, // S
         const double& _volatility_of_underlying_asset // sigma
         );
+
     VanillaOption& operator=(const VanillaOption &rhs);
     virtual ~VanillaOption();
 
     double getK() const;
-    double getT() const;
     double getr() const;
+    double getT() const;
     double getS() const;
     double getSigma() const;
+
+    double d1() const;
+    double d2() const;
 
     double calc_call_price() const;
     double calc_put_price() const;
@@ -44,8 +48,8 @@ private:
     // Standard normal cumulative distribution function (CDF)
     static double normalCDF(double const x) {
         return erfc( -x / sqrt(2) ) / 2;
-    }
+    };
+
 };
 
-
-#endif VANILLA_H
+#endif // VANILLA_H
