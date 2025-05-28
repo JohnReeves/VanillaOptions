@@ -25,11 +25,11 @@ void VanillaOption::copy(const VanillaOption &other) {
 VanillaOption::VanillaOption() { init(); }
 
 VanillaOption::VanillaOption(
-    const double &_strike_price,
-    const double &_risk_free_rate,
-    const double &_maturity_time,
-    const double &_underlying_asset_price,
-    const double &_volatility_of_underlying_asset) {
+    const double &_strike_price, // K
+    const double &_risk_free_rate, // r
+    const double &_maturity_time, // T
+    const double &_underlying_asset_price, // S
+    const double &_volatility_of_underlying_asset) { // sigma
 
     K = _strike_price;
     r = _risk_free_rate;
@@ -52,21 +52,29 @@ VanillaOption& VanillaOption::operator=(const VanillaOption &rhs) {
 VanillaOption::~VanillaOption() = default;
 
 double VanillaOption::getK() const { return K; }
-double VanillaOption::getT() const { return r; }
-double VanillaOption::getr() const { return T; }
+double VanillaOption::getT() const { return T; }
+double VanillaOption::getr() const { return r; }
 double VanillaOption::getS() const { return S; }
 double VanillaOption::getSigma() const { return sigma; }
 
-double VanillaOption::calc_call_price() const {
-    double const sigma_sqrt_T = sigma * sqrt( T );
-    double const d1 = ( log( S / K )
-                    + ( r + 0.5 * pow( sigma, 2.0 ) ) * T )
-                    / sigma_sqrt_T;
-    double const d2 = d1 - sigma_sqrt_T;
-    double const call = K * normalCDF(d1)
-                      - K * exp(r * T)
-                      * normalCDF(d2);
-    return call;
+double VanillaOption::d1() const {
+    return (log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * sqrt(T));
 }
 
-#endif VANILLA_CPP
+double VanillaOption::d2() const {
+    return d1() - sigma * sqrt(T);
+}
+
+double VanillaOption::calc_call_price() const {
+    double d_1 = d1();
+    double d_2 = d2();
+    return S * normalCDF(d_1) - K * std::exp(-r * T) * normalCDF(d_2);
+}
+
+double VanillaOption::calc_put_price() const {
+    double d_1 = d1();
+    double d_2 = d2();
+    return K * std::exp(-r * T) * normalCDF(-d_2) - S * normalCDF(-d_1);
+}
+
+#endif // VANILLA_CPP
