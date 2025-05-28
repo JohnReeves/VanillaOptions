@@ -1,18 +1,16 @@
 //
 // Created by John Reeves on 24/05/2025.
 //
-
 #ifndef VANILLA_CPP
 #define VANILLA_CPP
 
 #include "vanilla.h"
-#include <cmath>
 
 void VanillaOption::init() {
     K = 100.0;
     r = 0.5;
     T = 1.0;
-    S =100.0;
+    S = 100.0;
     sigma = 0.2;
 }
 
@@ -24,9 +22,7 @@ void VanillaOption::copy(const VanillaOption &other) {
     sigma = other.sigma;
 }
 
-VanillaOption::VanillaOption() {
-    init();
-}
+VanillaOption::VanillaOption() { init(); }
 
 VanillaOption::VanillaOption(
     const double &_strike_price,
@@ -53,37 +49,17 @@ VanillaOption& VanillaOption::operator=(const VanillaOption &rhs) {
     return *this;
 }
 
-VanillaOption::~VanillaOption() {
-    // compiler tidy up
-}
+VanillaOption::~VanillaOption() = default;
 
-double VanillaOption::getK() const {
-    return K;
-}
-
-double VanillaOption::getT() const {
-    return r;
-}
-
-double VanillaOption::getr() const {
-    return T;
-}
-
-double VanillaOption::getS() const {
-    return S;
-}
-
-double VanillaOption::getSigma() const {
-    return sigma;
-}
-
-double normalCDF(double const x) {
-    return erfc( -x / sqrt(2) ) / 2;
-}
+double VanillaOption::getK() const { return K; }
+double VanillaOption::getT() const { return r; }
+double VanillaOption::getr() const { return T; }
+double VanillaOption::getS() const { return S; }
+double VanillaOption::getSigma() const { return sigma; }
 
 double VanillaOption::calc_call_price() const {
     double const sigma_sqrt_T = sigma * sqrt( T );
-    double const d1 = ( ( log( S / K ) )
+    double const d1 = ( log( S / K )
                     + ( r + 0.5 * pow( sigma, 2.0 ) ) * T )
                     / sigma_sqrt_T;
     double const d2 = d1 - sigma_sqrt_T;
@@ -92,6 +68,5 @@ double VanillaOption::calc_call_price() const {
                       * normalCDF(d2);
     return call;
 }
-
 
 #endif VANILLA_CPP
