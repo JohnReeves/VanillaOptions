@@ -3,6 +3,10 @@
 //
 #ifndef VANILLA_H
 #define VANILLA_H
+
+#include <cmath>
+using namespace std;
+
 class VanillaOption {
 
 public:
@@ -28,15 +32,19 @@ public:
     double calc_put_price() const;
 
 private:
+    double K{}; //strike_price
+    double r{}; // risk_free_rate
+    double T{}; // maturity_time
+    double S{}; // underlying_asset_price
+    double sigma{}; // volatility_of_underlying_asset
+
     void init();
     void copy(const VanillaOption& other);
 
-    double K; //strike_price
-    double r; // risk_free_rate
-    double T; // maturity_time
-    double S; // underlying_asset_price
-    double sigma; // volatility_of_underlying_asset
-
+    // Standard normal cumulative distribution function (CDF)
+    static double normalCDF(double const x) {
+        return erfc( -x / sqrt(2) ) / 2;
+    }
 };
 
 
