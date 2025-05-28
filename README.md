@@ -38,3 +38,10 @@ sigma = 0.2  # Volatility
 
 call_price = black_scholes_call(S, X, t, r, sigma)
 ```
+
+
+```c++
+double normalCDF(double const x) {
+    return erfc( -x / sqrt(2) ) / 2;
+}
+```
